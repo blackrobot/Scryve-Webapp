@@ -1,10 +1,11 @@
 from django.conf.urls.defaults import *
 from piston.resource import Resource
-from apps.researchapi.handlers import CompanyHandler
+from apps.researchapi.handlers import CompanyHandler, SearchHandler
 
 company_handler = Resource(CompanyHandler)
+search_handler = Resource(SearchHandler)
 
 urlpatterns = patterns('',
-    url(r'company/(?P<company_id>\d+)', company_handler),
-    url(r'companies', company_handler)
+    url('^company/(?P<company_name>[^/]+)/', company_handler),
+    url('^search/(?P<search_term>[^/]+)/', search_handler)
 )

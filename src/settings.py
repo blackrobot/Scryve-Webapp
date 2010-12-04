@@ -87,15 +87,24 @@ if USE_I18N:
     TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.i18n',)
 
 MIDDLEWARE_CLASSES = (
+    # caching
+    'django.middleware.cache.UpdateCacheMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    # caching
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
 if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    pass
 
 ROOT_URLCONF = 'urls'
 
@@ -123,6 +132,9 @@ INSTALLED_APPS = (
 TEMPLATE_TAGS = (
     # 'sorl.thumbnail.templatetags.thumbnail',
 )
+
+MAX_COMPARABLE_COMPANIES = 3
+ONE_DAY = 60 * 60 * 24
 
 try:
     from local_settings import *
