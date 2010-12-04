@@ -32,6 +32,12 @@ def _round_company_rating(company):
 def _get_hashkey(prefix, query_term):
     return hashlib.md5('%s.%s' % (prefix, query_term,)).hexdigest()
 
+def _valid_query(query):
+    """
+    Potential for more sophisticated validation here.
+    """
+    return len(query) >= 3
+
 ## handler classes
 class CompanyHandler(BaseHandler):
     allowed_methods = ('GET',)
@@ -39,6 +45,7 @@ class CompanyHandler(BaseHandler):
 
     def read(self, request, company_name):
         company_name = urllib.unquote_plus(company_name)
+        if not _valid_query(company_name): return []
 
         # caching
         hashkey = _get_hashkey('company', company_name)
@@ -79,6 +86,7 @@ class SearchHandler(BaseHandler):
 
     def read(self, request, search_term):
         search_term = urllib.unquote_plus(search_term)
+        if not _valid_query(search_term): return []
 
         # caching
         hashkey = _get_hashkey('company', search_term)
