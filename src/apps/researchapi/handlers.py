@@ -19,13 +19,12 @@ ONE_DAY = settings.ONE_DAY
 MAX_COMPARABLE_COMPANIES = settings.MAX_COMPARABLE_COMPANIES 
 
 ## module utils
-def _rating_rounding(val):
-    return Decimal(str(val)).quantize(Decimal('.01'), rounding=decimal.ROUND_HALF_EVEN)
-
 def _round_company_rating(company):
     val = company.total_weighted_rating 
-    rounded = Decimal(str(val)).quantize(Decimal('.01'), rounding=decimal.ROUND_HALF_EVEN)
-    company.total_weighted_rating = rounded
+
+    if val:
+        rounded = Decimal(str(val)).quantize(Decimal('.01'), rounding=decimal.ROUND_HALF_EVEN)
+        company.total_weighted_rating = rounded
 
     if company.parent:
         _round_company_rating(company.parent)
