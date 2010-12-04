@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
 
-    (r'^api/', include('apps.researchapi.urls')),
+    (r'^', include('apps.researchapi.urls')),
 )
 
 import sys
