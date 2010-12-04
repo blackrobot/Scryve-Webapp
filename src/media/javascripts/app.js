@@ -11,7 +11,7 @@ $(document).ready(function(){
     function get_companies(val){
         $.getJSON(search_url + val + '/', function(data){
             if( data == undefined ){
-                return;
+                return false;
             }
             company_html = "";
 
@@ -43,7 +43,7 @@ $(document).ready(function(){
 
         $.getJSON(company_url + $(this).html() + '/', function(data){
             if( data == undefined ){
-                return;
+                return false;
             }
             alternatives_html = "";
 
