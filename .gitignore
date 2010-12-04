@@ -7,7 +7,9 @@
 
 # ignore development db files
 *.sqlite
+.ropeproject
 
 # ignore environment and local settings files
 # local_settings.py
 local-env/
+env/
