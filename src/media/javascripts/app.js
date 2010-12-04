@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    // var api_url = "http://api.scryve.com/",
+    var api_url = "http://api.scryve.com/",
     // var api_url = "http://localhost:8000/",
-    var api_url = "/",
+    // var api_url = "/",
         search_url = api_url + "search/",
         company_url = api_url + "company/";
 
