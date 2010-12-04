@@ -13,3 +13,4 @@
 # local_settings.py
 local-env/
 env/
+src/local_settings.py
