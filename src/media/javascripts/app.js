@@ -15,6 +15,8 @@ $(document).ready(function(){
             }
             company_html = "";
 
+            console.log(data);
+
             $.each(data.companies, function(count, company){
                 company_html += '<li><a href="#">' + company.name + '</a></li>';
             });
