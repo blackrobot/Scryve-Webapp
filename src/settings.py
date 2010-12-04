@@ -116,6 +116,8 @@ INSTALLED_APPS = (
     'django_extensions',
 
     # Project Applications
+    'apps.research',
+    'apps.researchapi'
 )
 
 TEMPLATE_TAGS = (
