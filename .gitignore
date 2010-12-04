@@ -1,0 +1,13 @@
+*.pyc
+
+# ignore emacs and vim tmp files
+.*.*.sw*
+\#*\#
+*~
+
+# ignore development db files
+*.sqlite
+
+# ignore environment and local settings files
+# local_settings.py
+local-env/
