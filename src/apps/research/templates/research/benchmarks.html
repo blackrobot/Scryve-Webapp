@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" enctype="multipart/form-data" method="post">
+<fieldset>
+<table style="margin:30px auto;padding:50px;width:60%;">
+    <tbody>
+        <tr><h2>Benchmarks</h2></tr>
+        {% if benchmark_success %}<tr><td><h3 style="color:green;">Success</h3></td></tr>{% endif %}
+        {{ benchmark_form.as_table }}
+    </tbody>
+</table>
+<input type="submit" value="Submit" />
+</fieldset>
+</form>
+
+<form action="" enctype="multipart/form-data" method="post">
+<fieldset>
+<table style="margin:30px auto;padding:50px;width:60%;">
+    <tbody>
+        <tr><h2>Research</h2></tr>
+        {% if research_success %}<tr><td><h3 style="color:green;">Success</h3></td></tr>{% endif %}
+        {{ research_form.as_table }}
+    </tbody>
+</table>
+<input type="submit" value="Submit" />
+</fieldset>
+</form>
+{% endblock content %}

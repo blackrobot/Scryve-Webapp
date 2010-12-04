@@ -1,0 +1,42 @@
+<html>
+<head>
+    <style type="text/css">
+    body { font:12px/16px Verdana,Helvetica,sans-serif; }
+    form { margin:20px auto; width:30%; }
+    thead td { border:1px solid #333; font-weight:bold; }
+    td { padding:0 15px; }
+    tr.alternate { background:#9f9f9f; }
+    td.rating { text-align:center; }
+    </style>
+</head>
+<body>
+    <form action="." method="POST">
+        <fieldset>
+        {{ form.as_p }}
+        </fieldset>
+        <input type="submit" value="submit" />
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Company Name</td>
+                <td>Parent</td>
+                {% comment %}<td>Product</td>{% endcomment %}
+                <td>Rating</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for company in companies %}
+            <tr{% cycle '' ' class="alternate"' %}>
+                <td>{{ company.name }}</td>
+                <td>{{ company.parent.name }}</td>
+                {% comment %}<td>{{ company.product }}</td>{% endcomment %}
+                <td class="rating">{{ company.total_weighted_rating|floatformat:"0" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
