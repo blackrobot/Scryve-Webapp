@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>GroovletServlet</servlet-name>
+        <servlet-class>groovyx.gaelyk.GaelykServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>TemplateServlet</servlet-name>
+        <servlet-class>groovyx.gaelyk.GaelykTemplateServlet</servlet-class>
+        <init-param>
+            <param-name>generated.by</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>verbose</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>GroovletServlet</servlet-name>
+        <url-pattern>*.groovy</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TemplateServlet</servlet-name>
+        <url-pattern>*.gtpl</url-pattern>
+    </servlet-mapping>
+
+    <mime-mapping>    
+        <extension>manifest</extension>        
+        <mime-type>text/cache-manifest</mime-type>        
+    </mime-mapping>    
+
+<!--
+ GAE/Gaelyk handing of welcome-files sure is funky
+ There are a bunch of issues in the GAE Issues DB
+ I wish I understood how it really works...
+-->
+
+    <welcome-file-list>
+        <welcome-file>index.gtpl</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
